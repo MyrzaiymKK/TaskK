@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: TestingTask1
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        password: 2020
+        url: jdbc:postgresql://localhost:5432/dbofbank
+        username: postgres
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        open-in-view: false
+
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+    jwt:
+        secret: bank

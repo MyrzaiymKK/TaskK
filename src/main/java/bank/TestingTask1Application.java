@@ -1,0 +1,13 @@
+package bank;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TestingTask1Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TestingTask1Application.class, args);
+    }
+
+}
