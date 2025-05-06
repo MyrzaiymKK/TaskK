@@ -22,8 +22,8 @@ public class ProcessingApi {
     private final MasterCardProcessingService masterCardProcessing;
     private final CardService cardService;
     private final Depozite depozite;
-    private final Credit credit;
-    private final Creditt creditt;
+
+
     private final AccessServicee accessSer;
 
     @PostMapping("/replenishVisa")
@@ -56,20 +56,9 @@ public class ProcessingApi {
         return depozite.replenishDepo(depoRequest);
     }
 
-    @PostMapping("/credit")
-    public SimpleResponse credit(@RequestBody DepoRequest depoRequest){
-        return credit.credit(depoRequest);
-    }
 
-    @PostMapping("/creditt")
-    public SimpleResponse creditt(@RequestBody DepoRequest depoRequest){
-        return creditt.creditt(depoRequest);
-    }
 
-    @PostMapping("/dep")
-    public SimpleResponse dep(@RequestBody DepoRequest depoRequest){
-        return creditt.dep(depoRequest);
-    }
+
 
     @PostMapping("/access")
     public SimpleResponse dep(@RequestBody AccesssRequest accesssRequest){
