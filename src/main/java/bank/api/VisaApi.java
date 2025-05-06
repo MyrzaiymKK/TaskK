@@ -4,7 +4,7 @@ package bank.api;
 import bank.dto.request.MoneyRequest;
 import bank.dto.request.TransferrRequest;
 import bank.dto.response.SimpleResponse;
-import bank.service.CardRequest;
+import bank.dto.request.CardRequest;
 import bank.service.impl.VisaProcessingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;

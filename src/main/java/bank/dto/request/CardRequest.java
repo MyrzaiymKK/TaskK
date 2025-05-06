@@ -1,4 +1,4 @@
-package bank.service;
+package bank.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

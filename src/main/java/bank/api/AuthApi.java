@@ -22,7 +22,7 @@ public class AuthApi {
     private final CardService cardService;
 
     @PostMapping("/signUp")
-    SimpleResponse signUps (@Valid  @RequestBody SignUpRequest signUpRequest){
+    SimpleResponse signUp (@Valid  @RequestBody SignUpRequest signUpRequest){
         return cardService.createUser(signUpRequest);
     }
 

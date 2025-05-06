@@ -1,6 +1,7 @@
 package bank.service.impl;
 
 import bank.dto.request.SignInCardRequest;
+import bank.dto.request.TransferrRequest;
 import bank.dto.response.SignInResponse;
 import bank.dto.request.SignUpRequest;
 import bank.dto.response.SimpleResponse;
@@ -10,6 +11,8 @@ import bank.entities.Payment;
 import bank.repository.CardRepository;
 import bank.repository.ClientRepository;
 import bank.security.jwt.JwtService;
+import bank.service.impl.MasterCardProcessingService;
+import bank.service.impl.VisaProcessingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Random;
 
 @Service
@@ -28,6 +32,7 @@ public class CardService {
     private final CardRepository cardRepository;
     private final ClientRepository clientRepository;
     private final JwtService jwtService;
+
 
     public static String generateNum(Payment paymentSystem) {
         Random random = new Random();
@@ -44,10 +49,7 @@ public class CardService {
 
 
     public SignInResponse singInToCard(SignInCardRequest signInCardRequest) {
-            Client client = clientRepository.findClientWithNum(signInCardRequest.getNumberOfCard());
-        if (client == null) {
-            throw new RuntimeException("Client not found");
-        }
+
         Card card = cardRepository.findCardWithNum(signInCardRequest.getNumberOfCard());
         if (card == null) {
             throw new RuntimeException("Card not found");
@@ -141,5 +143,7 @@ public class CardService {
                 .message("Successfully created!")
                 .build();
     }
+
+
 
 }

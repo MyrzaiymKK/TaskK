@@ -6,7 +6,7 @@ import bank.dto.response.SimpleResponse;
 import bank.entities.Card;
 import bank.entities.Payment;
 import bank.repository.CardRepository;
-import bank.service.CardRequest;
+import bank.dto.request.CardRequest;
 import bank.service.ProcessingCenterStrategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +21,11 @@ public class MasterCardProcessingService implements ProcessingCenterStrategy {
 
     private final PasswordEncoder passwordEncoder;
     private final CardRepository cardRepository;
+
+    @Override
+    public Payment getPayment() {
+        return Payment.MASTERCARD;
+    }
 
     //TODO Этот метод реализует перевод средств между двумя картами.
     // Для каждой транзакции проверяется, совпадают ли пароли карт,
@@ -72,7 +77,7 @@ public class MasterCardProcessingService implements ProcessingCenterStrategy {
         }
         return SimpleResponse.builder()
                 .httpStatus(HttpStatus.OK)
-                .message("Successfully transferred!")
+                .message("Successfully transferred!" + " balance: " + card.getBalance())
                 .build();
     }
 
@@ -93,7 +98,7 @@ public class MasterCardProcessingService implements ProcessingCenterStrategy {
         cardRepository.save(card);
         return SimpleResponse.builder()
                 .httpStatus(HttpStatus.OK)
-                .message(card.getPayment() + " card is replenished successfully!   " + card.getNumberOfCard())
+                .message(card.getPayment() + " card is replenished successfully!    " +" balance: " + card.getBalance())
                 .build();
     }
 
